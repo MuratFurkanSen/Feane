@@ -1,26 +1,7 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  {% include '__head.html' %}
-  {% block head %}{% endblock %}
-</head>
-
-<body class="sub_page">
-
-  <div class="hero_area">
-    <div class="bg-box">
-      <img src="{% static 'images/hero-bg.jpg'%}" alt="">
-    </div>
-    <!-- header section strats -->
-      {% include '__header.html' %}
-    <!-- end header section -->
-  </div>
-
-  <!-- about section -->
-
-  <section class="about_section layout_padding">
+{% block content_sections %}
+    <section class="about_section layout_padding">
     <div class="container  ">
 
       <div class="row">
@@ -50,19 +31,4 @@
       </div>
     </div>
   </section>
-
-  <!-- end about section -->
-
-  <!-- footer section -->
-    {% include '__footer.html' %}
-  <!-- footer section -->
-    {% include '__foot.html' %}
-  {% block foot %}{% endblock %}
-  <!-- Google Map -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
-  </script>
-  <!-- End Google Map -->
-
-</body>
-
-</html>
+{% endblock %}

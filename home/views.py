@@ -27,6 +27,10 @@ def book_table(request):
 
 
 def menu(request):
+    foods = Item.objects.all()
+    categories = Category.objects.all()
     page = 'Menu'
-    context = {'page': page}
+    context = {'page': page,
+               'foods': foods,
+               'categories': categories}
     return render(request, 'menu.html', context)

@@ -1,2 +1,9 @@
 {% extends 'base.html' %}
-{% block content %}{% include 'slider.html' %}{% endblock %}
+{% load static %}
+{% block content_div %}
+    {% include '__slider.html' %}
+{% endblock %}
+{% block content_sections %}
+    {% include '__offers.html' %}
+    {% include '__foods.html' %}
+{% endblock %}
