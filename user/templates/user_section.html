@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content_sections %}
+    <section class="book_section layout_padding">
+        <div class="container">
+            <div class="heading_container">
+                <h2>
+                    User Section
+                </h2>
+            </div>
+            {% if page == "Login" %}
+                {% include '__login.html' %}
+            {% elif page == "Register" %}
+                {% include '__register.html' %}
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}

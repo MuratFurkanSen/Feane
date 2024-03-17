@@ -1,0 +1,32 @@
+<form class="form_container" action="/user/login/" method="post">
+    {% csrf_token %}
+
+    <div class="row">
+        <div class="col-md-3">
+            {% for field in form.visible_fields %}
+                {% if not forloop.counter|divisibleby:2 %}
+                    {{ field }}
+                {% endif %}
+            {% endfor %}
+            <div class="btn_box">
+                <button type="submit">
+                    Login Now 😎
+                </button>
+            </div>
+        </div>
+        <div class="col-md-3">
+            {% for field in form.visible_fields %}
+                {% if forloop.counter|divisibleby:2 %}
+                    {{ field }}
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</form>
+<div class="form_container btn_box">
+    <a href="/user/register/">
+        <button type="submit">
+            Sign Up Now 😎
+        </button>
+    </a>
+</div>
