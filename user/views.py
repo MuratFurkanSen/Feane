@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth import login, authenticate
 
 from user.forms import UserRegisterForm, UserLoginForm
@@ -9,17 +10,26 @@ from user.models import UserProfile
 
 # Create your views here.
 def user_register(request):
+    print("HALLLLLLLLOOOOOO1")
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
+        print("HALLLLLLLLOOOOOO2")
         if form.is_valid():
+
+            print("HALLLLLLLLOOOOOO3")
             form.save()
+            print("HALLLLLLLLOOOOOO4")
             username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-
-            authenticate(username=username, password=password)
+            password = form.cleaned_data['password1']
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            messages.success(request, "Hesabınız Oluşturuldu")
             return HttpResponseRedirect('/user/user_profile/')
+        else:
+            messages.error(request, form.errors)
+            return HttpResponseRedirect('/user/register/')
 
-    form = UserRegisterForm()
+    form = UserRegisterForm
     page = 'Register'
     context = {'page': page,
                'form': form}
@@ -28,7 +38,6 @@ def user_register(request):
 
 def user_login(request):
     if request.method == 'POST':
-        print("Hallo")
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
@@ -50,8 +59,8 @@ def user_login(request):
 
 
 def user_profile(request):
-    if request.user.is_authenticated:
-        pass
+    return HttpResponseRedirect('/user/login/')
+
 
 
 def user_redirect(request):

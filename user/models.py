@@ -22,9 +22,10 @@ class UserProfile(models.Model):
         return mark_safe(f'<img src="{self.image.url}"/>')
 
     def __str__(self):
-        return self.username
+        return self.user.username
 
-@receiver(post_save, sender = User)
+
+@receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         UserProfile.objects.create(user=instance)

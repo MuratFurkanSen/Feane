@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content_sections %}
+    {% for food in items %}
+        {% include 'item_card.html' %}
+    {% endfor %}
+
+{% endblock %}
+
